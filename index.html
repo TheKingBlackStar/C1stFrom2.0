@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-1st Ride Share</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <header>
+        <img src="your-logo.png" alt="Company Logo"> <!-- Replace with your logo image URL -->
+    </header>
+    <div class="container">
+        
+        <form action="https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec" method="POST" name="submit--google-sheet">
+            <h2>C-1st Ride request</h2>
+            <h3>Personal Information</h3>
+            <input class="First Name" type="text" name="First Name" placeholder="Your First Name"><!--required-->
+            <input class="Last Name" type="text" name="Last Name" placeholder="Your Last Name">
+            <input class="email" type="email" name="Email" placeholder="Email">
+            <input class="phone" type="tel" name="Phone" placeholder="Phone: 123-456-8900">
+            <h3>Date and time of appt</h3>
+            <input class="Appt date" type="date" name="Appt date" placeholder="Appt date">
+            <input class="Appt Time" type="time" name="Appt Time" placeholder="Appt Time">
+            <input class="Pick-up Location" type="text" name="Pick-up Location" placeholder="Full address (123 Lane Rd 12345) / Pick-up Location"> 
+            <input class="Medical Facility" type="text" name="Medical Facility" placeholder="Full address (123 Lane Rd 12345) / Medical facility"> 
+            <h3>After your appt will you need a ride home</h3>
+            <br>
+            <input class="RT" type="radio" name="RT">
+            <label for="Yes">Yes</label><br>
+            <input type="hidden" name="Submission Date" id="submissionDate">
+            <input type="hidden" name="Submission Time" id="submissionTime">
+            <textarea class="msg" name="Message" placeholder="Is there anything we should know?" id="message" cols="30" rows="5"></textarea>
+            <h2>All rides are based on if there are enough drivers. The earlier you make a request, the more likely you will be accepted.</h2>
+            <button type="submit">Apply</button>
+        </form>
+    </div> 
+
+    <div id="thankYouMessage" style="display: none;">
+        Thank you for submitting your request! We will let you know if your Approved!
+    </div>
+    
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec'; // Your script URL
+        const form = document.forms['submit--google-sheet'];
+    
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+    
+            // Get the current date and time
+            const currentDateTime = new Date();
+            const submissionDate = currentDateTime.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            const submissionTime = currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Format: HH:MM AM/PM
+    
+            // Set the values of the hidden input fields
+            document.getElementById('submissionDate').value = submissionDate;
+            document.getElementById('submissionTime').value = submissionTime;
+    
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                });
+    
+                console.log('Success!', response);
+    
+                // Hide the form and show the thank you message
+                form.style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+            } catch (error) {
+                console.error('Error!', error.message);
+            }
+        });
+    </script>
+    
+    
+
+</body>
+</html>
+
+<!--<a href='mailto:person1@domain.example,person2@domain.example'>Email Us</a>-->

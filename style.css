@@ -1,0 +1,101 @@
+/* Reset styles for default elements */
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+/* Set a professional font and color scheme */
+body {
+    font-family: "Arial", Helvetica, sans-serif;
+    color: #333; /* Use a neutral color */
+    background-color: #f7f7f7; /* Use a light background color */
+}
+
+/* Style the header with a professional appearance */
+header {
+    text-align: center;
+    background-color: #673de6; /* Deep purple */
+    padding: 20px;
+    border-bottom: 1px solid #5a32b0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for the form */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px; /* Add margin at the bottom */
+}
+
+/* Style form headings */
+h2, h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #673de6; /* Deep purple */
+}
+
+/* Style input fields */
+input, select, textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    transition: border-color 0.2s ease-in-out;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #673de6; /* Deep purple */
+}
+
+/* Style radio buttons */
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #673de6; /* Deep purple */
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #673de6; /* Deep purple */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: #5a32b0; /* Slightly darker deep purple */
+}
+
+#thankYouMessage {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the thank you message heading */
+#thankYouMessage h3 {
+    margin-top: 0;
+    font-size: 24px;
+}
