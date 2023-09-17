@@ -1,0 +1,27 @@
+name: Update Cloudflare DNS
+
+on:
+  push:
+    branches:
+      - main  # Change this to your repository's main branch
+
+jobs:
+  update_dns:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Cloudflare CLI
+        run: |
+          curl -L https://github.com/cloudflare/cloudflare-go/releases/latest/download/cloudflare-linux-amd64 -o /usr/local/bin/cloudflare
+          chmod +x /usr/local/bin/cloudflare
+
+      - name: Update DNS Records
+        env:
+          CF_API_EMAIL: ${{ secrets.CF_API_EMAIL }}
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+        run: |
+          cloudflare dns update c1stllc.com A --type A --content 192.0.2.1
