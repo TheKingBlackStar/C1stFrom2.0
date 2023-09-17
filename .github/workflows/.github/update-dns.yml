@@ -24,4 +24,7 @@ jobs:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
         run: |
-          cloudflare dns update c1stllc.com A --type A --content 192.0.2.1
+          cloudflare dns update c1stllc.com A --type A --content 185.199.110.153
+          cloudflare dns update c1stllc.com A --type A --content 185.199.108.153
+          cloudflare dns update c1stllc.com A --type A --content 185.199.111.153
+          cloudflare dns update c1stllc.com A --type A --content 185.199.109.153
