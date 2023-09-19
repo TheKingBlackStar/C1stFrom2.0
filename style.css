@@ -7,6 +7,14 @@
     box-sizing: border-box;
 }
 
+.notice {
+    background-color: #FFD700; /* Yellow background */
+    color: #000; /* Black text color */
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
 /* Set a professional font and color scheme */
 body {
     font-family: "Arial", Helvetica, sans-serif;
