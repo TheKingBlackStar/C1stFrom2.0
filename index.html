@@ -19,26 +19,26 @@
         <form action="https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec" method="POST" name="submit--google-sheet">
             <h2>C-1st Ride request</h2>
             <h3>Personal Information</h3>
-            <input class="First Name" type="text" name="First Name" placeholder="Your First Name"><!--required-->
-            <input class="Last Name" type="text" name="Last Name" placeholder="Your Last Name">
-            <input class="email" type="email" name="Email" placeholder="Email">
-            <input class="phone" type="tel" name="Phone" placeholder="Phone: 123-456-8900">
+            <input class="First Name" type="text" name="First Name" placeholder="Your First Name" required><!--required-->
+            <input class="Last Name" type="text" name="Last Name" placeholder="Your Last Name" required>
+            <input class="email" type="email" name="Email" placeholder="Email"required>
+            <input class="phone" type="tel" name="Phone" placeholder="Phone: 123-456-8900" required>
             <h3>Date and time of appt</h3>
-            <input class="Appt date" type="date" name="Appt date" placeholder="Appt date">
-            <input class="Appt Time" type="time" name="Appt Time" placeholder="Appt Time">
+            <input class="Appt date" type="date" name="Appt date" placeholder="Appt date" required>
+            <input class="Appt Time" type="time" name="Appt Time" placeholder="Appt Time" required>
              <H3>Starting location</H3>
-            <input class="Pick-up Location" type="text" name="Pick-up Location" placeholder="Pick-up address"> 
+            <input class="Pick-up Location" type="text" name="Pick-up Location" placeholder="Pick-up address" required> 
             <div class="location">
-            <input class="HomeCity" type="Hometext" name="HomeCity" placeholder="City">
-            <input class="HomeState" type="Hometext" name="HomeState" placeholder="State">
-            <input class="Zip Code" type="text" name="HomeZip" placeholder="Zip Code">
+            <input class="HomeCity" type="Hometext" name="HomeCity" placeholder="City" required>
+            <input class="HomeState" type="Hometext" name="HomeState" placeholder="State" required>
+            <input class="Zip Code" type="text" name="HomeZip" placeholder="Zip Code" required>
             </div>
             <h3>Medical Location</h3> 
-            <input class="Medical Facility" type="text" name="Medical Facility" placeholder="Medical facility"> 
+            <input class="Medical Facility" type="text" name="Medical Facility" placeholder="Medical facility" required> 
             <div class="location">
-            <input class="MedCity" type="Medtext" name="MedCity" placeholder="City">
-            <input class="MedState" type="Medtext" name="MedState" placeholder="State">
-            <input class="Zip Code" type="text" name="MedZip" placeholder="Zip Code">
+            <input class="MedCity" type="Medtext" name="MedCity" placeholder="City" required>
+            <input class="MedState" type="Medtext" name="MedState" placeholder="State" required>
+            <input class="Zip Code" type="text" name="MedZip" placeholder="Zip Code" required>
             </div>
             <h3>After your appt will you need a ride home (Yes/No)</h3>
             <br>
@@ -46,7 +46,7 @@
             <label for="Yes">Yes</label><br>
             <input type="hidden" name="Submission Date" id="submissionDate">
             <input type="hidden" name="Submission Time" id="submissionTime">
-            <textarea class="msg" name="Message" placeholder="Is there anything we should know?" id="message" cols="30" rows="5"></textarea>
+            <textarea class="msg" name="Message" placeholder="Is there anything we need to know? If not type no." id="message" cols="30" rows="5" required></textarea>
             <h2>All rides are based on if there are enough drivers. The earlier you make a request, the more likely you will be accepted.</h2>
             <button type="submit">Apply</button>
         </form>
