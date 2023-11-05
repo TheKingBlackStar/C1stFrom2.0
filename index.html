@@ -22,8 +22,7 @@
         <p>Please be sure you qualify to receive transportation benefits through Medicaid and Job and Family Services of Erie County.</p>
     </div>
     <div class="container">
-        
-        <form action="https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec" method="POST" name="submit--google-sheet">
+        <form id="rideForm" action="https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec" method="POST">
             <h2>C-1st Ride request</h2>
             <h3>Personal Information</h3>
             <input class="First Name" type="text" name="First Name" placeholder="Your First Name" required><!--required-->
@@ -84,8 +83,8 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec'; // Your script URL
-        const form = document.getElementById('rideForm');
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec';
+            const form = document.getElementById('rideForm');
             const submitButton = document.getElementById('submitBtn');
             const thankYouMessage = document.getElementById('thankYouMessage');
 
@@ -133,9 +132,5 @@
         });
     </script>
     
-    
-
 </body>
 </html>
-
-<!--<a href='mailto:person1@domain.example,person2@domain.example'>Email Us</a>-->
