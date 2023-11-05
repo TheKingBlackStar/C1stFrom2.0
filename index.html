@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C-1st Ride Share</title>
     <link rel="stylesheet" href="style.css">
-   
 </head>
 <body>
-    <header>
-        <img src="your-logo.png" alt="Company Logo"> <!-- Replace with your logo image URL -->
+    <header class="navbar">
+        <div class="navbar">
+            <img src="./Images/Resized_C1.jpg" alt="Your Logo" class="logo"/>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="./HTML/About.html">About</a></li>
+                <li><a href="./HTML/Service.html">Services</a></li>
+                <li><a href="./HTML/Contact.html">Contact</a></li>
+            </ul>
+        </div>
     </header>
     <div class="notice">
         <p>Please be sure you qualify to receive transportation benefits through Medicaid and Job and Family Services of Erie County.</p>
@@ -54,44 +61,75 @@
             <input type="hidden" name="Submission Time" id="submissionTime">
             <textarea class="msg" name="Message" placeholder="Is there anything we need to know? If not type no." id="message" cols="30" rows="5" required></textarea>
             <h2>All rides are based on if there are enough drivers. The earlier you make a request, the more likely you will be accepted.</h2>
-            <button type="submit">Apply</button>
+            
+
+            <!-- Hidden inputs for formsubmit.co -->
+            <input type="hidden" name="_to" value="p_gresham@outlook.com, sleeptyte813@gmail.com">
+            <input type="hidden" name="_subject" value="New ride request submitted">
+            <input type="hidden" name="_next" value="YOUR_THANK_YOU_PAGE_URL_HERE"> <!-- You can direct users to a thank you page after submitting -->
+
+            <!-- Hidden fields for Google Sheets -->
+            <input type="hidden" name="Submission Date" id="submissionDate">
+            <input type="hidden" name="Submission Time" id="submissionTime">
+            <input type="hidden" name="_captcha" value="false">
+
+
+
+            <button type="submit" id="submitBtn">Apply</button>
         </form>
     </div> 
-
     <div id="thankYouMessage" style="display: none;">
-        Thank you for submitting your request! We will let you know if your Approved!
+        Thank you for submitting your request! We will let you know if you are approved!
     </div>
     
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec'; // Your script URL
-        const form = document.forms['submit--google-sheet'];
-    
-        form.addEventListener('submit', async e => {
-            e.preventDefault();
-    
-            // Get the current date and time
-            const currentDateTime = new Date();
-            const submissionDate = currentDateTime.toISOString().split('T')[0]; // Format: YYYY-MM-DD
-            const submissionTime = currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Format: HH:MM AM/PM
-    
-            // Set the values of the hidden input fields
-            document.getElementById('submissionDate').value = submissionDate;
-            document.getElementById('submissionTime').value = submissionTime;
-    
-            try {
-                const response = await fetch(scriptURL, {
-                    method: 'POST',
-                    body: new FormData(form)
-                });
-    
-                console.log('Success!', response);
-    
-                // Hide the form and show the thank you message
-                form.style.display = 'none';
-                document.getElementById('thankYouMessage').style.display = 'block';
-            } catch (error) {
-                console.error('Error!', error.message);
-            }
+        document.addEventListener('DOMContentLoaded', function () {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec'; // Your script URL
+        const form = document.getElementById('rideForm');
+            const submitButton = document.getElementById('submitBtn');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+
+            if (!form || !submitButton) {
+            console.error('Critical elements not found in the DOM');
+            return;
+    }
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                submitButton.disabled = true;
+                submitButton.innerText = 'Sending...';
+
+                // Set the date and time fields before sending
+                const currentDateTime = new Date();
+                document.getElementById('submissionDate').value = currentDateTime.toLocaleDateString();
+                document.getElementById('submissionTime').value = currentDateTime.toLocaleTimeString();
+
+                try {
+                    const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
+
+                    // Check for a network error
+                    if (!response.ok) {
+                        console.error('Network response was not ok. Status:', response.status, response.statusText);
+                        throw new Error('Network response was not ok');
+                    }
+
+                    console.log('Success:', response);
+                    form.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
+                } catch (error) {
+                    console.error('Error:', error);
+
+                    // Log the server's error response text, if available
+                    if (error.response) {
+                        error.response.text().then((text) => {
+                            console.error('Server response:', text);
+                        });
+                    }
+
+                    alert('There was an issue submitting your form. Please try again.');
+                    submitButton.disabled = false;
+                    submitButton.innerText = 'Apply';
+                }
+            });
         });
     </script>
     
