@@ -7,13 +7,189 @@
     box-sizing: border-box;
 }
 
-.notice {
-    background-color: #FFD700; /* Yellow background */
-    color: #000; /* Black text color */
-    text-align: center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    max-width: 200px;  /* or any size according to your design */
+    margin: 10px auto; /* vertical space and horizontal auto for centering */
+}
+
+/* Adding Google Font - Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Style for Forms */
+form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+input, select, textarea {
+    width: calc(100% - 20px);
     padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    background-color: #673de6;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #552cb5;
+}
+
+input::placeholder {
+    color: #a9a9a9;
+}
+
+/* Styles for Headings */
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    color: #673de6;
+}
+
+h2 {
+    font-size: 28px;
+    color: #552cb5;
+}
+
+h3 {
+    font-size: 24px;
+    color: #9b74f2;
+}
+
+@keyframes popIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h1, h2, h3 {
+    animation: popIn 0.6s ease-out;
+}
+
+.img {
+    max-width: 200px;  /* You can adjust the value as per your requirement */
+    height: auto;  /* Maintains aspect ratio */
+}
+
+/* Navigation Bar Styling */
+/* Hamburger Icon Styling */
+.navbar {
+    background-color: #333;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.navbar a:hover {
+    color: #ddd;
+}
+
+
+.navbar, .notice {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    display: block;
+    padding: 14px;
+}
+
+.menu {
+    display: none;
+}
+
+.menu a {
+    padding: 14px 20px;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background-color: #5a32b0;
+}
+
+@media (min-width: 600px) {
+    .menu-icon {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+    }
+
+    .menu a {
+        padding: 14px 20px;
+    }
+}
+
+
+
+
+.notice {
+    background-color: #e44d26;  /* Red-Orange background */
+    color: #fff;  /* White text color */
+    text-align: center;
+    padding: 15px;
     font-weight: bold;
-    
+    border: 3px solid #fff;  /* White border */
+    border-radius: 10px;  /* Rounded corners */
+    margin: 20px 0;  /* Top and bottom margin */
+    margin-top: 0;
+}
+
+.notice p {
+    margin-top: 0;
+    /* other styles... */
 }
 
 /* Set a professional font and color scheme */
