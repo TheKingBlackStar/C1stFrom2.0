@@ -1,4 +1,4 @@
-const form = document.forms['submit-to-google-sheet'];
+/*const form = document.forms['submit-to-google-sheet'];
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzVZQAMyBuXxwPRn-mZSJIAJnfIwutxKp8cjfkBbZF5J-uixXbNpsFrsFPoOlfkE_zbkQ/exec';
 
         form.addEventListener('submit', async e => {
@@ -24,4 +24,4 @@ const form = document.forms['submit-to-google-sheet'];
             } catch (error) {
                 console.error('Error:', error);
             }
-        });
+        });*/
